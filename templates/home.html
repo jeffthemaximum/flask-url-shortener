@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+	<div class="jumbo">
+		<h2>Welcome to Jeffs URL Shortener</h2>
+		<h3> This is the homepage for URL shortening!</h3>
+		<h3> Enter the URL to be shortened:
+			<form action="/tiny", id="urlform", method="POST">
+				<input type="text" name="url"><br>
+				<input type="submit" value="submit">
+			</form>
+		 <h3>
+	</div>
+{% endblock %}
