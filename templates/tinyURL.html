@@ -2,4 +2,6 @@
 {% block content %}
 	<h3>Long URL</h3>
 	<p>This is your long URL: {{ url }} </p>
+	<p>This is your short URL: <a href="http://localhost:5000{{ url_for('home') }}{{ new_url }}">localhost:5000{{ url_for('home') }}{{ new_url }}</a></p>
+	<a href='/'>Go back! Make another short URL!</a>
 {% endblock %}
