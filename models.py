@@ -6,13 +6,14 @@ def insert_link(key,url,hits):
 		cur.execute("INSERT INTO link (key,url,hits) VALUES (?,?,?)", (key,url,hits))
 		con.commit()
 
-def query_hits_for_link(key):
+def query_hits_and_url_for_link(key):
 	with sql.connect("database.db") as con:
 		cur = con.cursor()
 		key = str(key)
-		cur.execute("SELECT hits FROM link WHERE key=?", (key,))
-		url_data = cur.fetchall()
-		print url_data
+		cur.execute("SELECT hits, url FROM link WHERE key=?", (key,))
+		link_data = cur.fetchall()
+		print link_data
+		return link_data
 
 def update_hits(key):
 	with sql.connect("database.db") as con:

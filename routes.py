@@ -25,16 +25,17 @@ def tiny():
 		short.append(str(num))
 	shuffle(short)
 	new_url = "".join(short)
-	my_dict[new_url] = url
 	models.insert_link(new_url, url, 0)
+	hits = models.query_hits_and_url_for_link(new_url)[0][0]
+	url = models.query_hits_and_url_for_link(new_url)[0][1]
 
-	return render_template('tinyURL.html', url=url, new_url=new_url)
+	return render_template('tinyURL.html', url=url, new_url=new_url, hits=hits)
 
 @app.route('/<key>', methods=['GET'])
 def redirect_tiny(key):
-	long_url = 'http://' + my_dict[key]
+	url = models.query_hits_and_url_for_link(key)[0][1]
+	long_url = 'http://' + url
 	models.update_hits(key)
-	models.query_hits_for_link(key)
 	return redirect(long_url, code=302)
 
 if __name__ == '__main__':
