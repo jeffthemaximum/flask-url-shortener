@@ -34,7 +34,7 @@ def tiny():
 def redirect_tiny(key):
 	long_url = 'http://' + my_dict[key]
 	models.update_hits(key)
-	models.query_link(key)
+	models.query_hits_for_link(key)
 	return redirect(long_url, code=302)
 
 if __name__ == '__main__':
