@@ -1,0 +1,1 @@
+SERVER_NAME = 'tinyjeff.herokuapp.com'
