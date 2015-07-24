@@ -35,14 +35,17 @@ def tiny():
 	models.insert_link(new_url, url, 0)
 
 	#query hitcount from db
-	hits = models.query_hits_and_url_for_link(new_url)[0][0]
+	hits = models.query_hits_and_url_for_link(new_url)[0][3]
 
 	#render tinyURL.html with url, new_url, and hits params
 	return render_template('tinyURL.html', url=url, new_url=new_url, hits=hits)
 
 @app.route('/<key>', methods=['GET'])
 def redirect_tiny(key):
-	url = models.query_hits_and_url_for_link(key)[0][1]
+	try:
+		url = models.query_hits_and_url_for_link(key)[0][2]
+	except:
+		url = ""
 	long_url = 'http://' + url
 	models.update_hits(key)
 	return redirect(long_url, code=302)

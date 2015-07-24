@@ -10,7 +10,7 @@ def query_hits_and_url_for_link(key):
 	with sql.connect("database.db") as con:
 		cur = con.cursor()
 		key = str(key)
-		cur.execute("SELECT hits, url FROM link WHERE key=?", (key,))
+		cur.execute("SELECT * FROM link WHERE key=?", (key,))
 		link_data = cur.fetchall()
 		print link_data
 		return link_data
