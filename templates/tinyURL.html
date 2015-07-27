@@ -2,7 +2,7 @@
 {% block content %}
 	<h3>Long URL</h3>
 	<p>This is your long URL: {{ url }} </p>
-	<p>This is your short URL: <a id="link" target="_blank" href="http://localhost:5000{{ url_for('home') }}{{ new_url }}">localhost:5000{{ url_for('home') }}{{ new_url }}</a></p>
+	<p>This is your short URL: <a id="link" target="_blank" href="" urlkey="{{ new_url }}"></a></p>
 	<p id="hit_count">Think short URL has been visited {{ hits }} times</p>
 	<a href='/'>Go back! Make another short URL!</a>
 {% endblock %}

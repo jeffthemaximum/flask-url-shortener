@@ -3,6 +3,10 @@ String.prototype.getKey = function() {
 }
 
 $(document).ready(function(){
+	var base_url = window.location.origin;								//get base url of tinyurl webapp
+	var url = base_url + '/' + $('#link').attr('urlKey');				//build link using baseurl + / + key
+	$('#link').attr('href', url);										//set href of link to url
+	$('#link').text(url);												//set text of link to url
 	$( "#link" ).click(function() {										//when link is clicked
 		var addressValue = $(this).attr("href");						//jquery gets the href attr of link and js sets addressValue equal to this
 		addressValue = addressValue.getKey();							//getKey function gets the last 8 char's of href
