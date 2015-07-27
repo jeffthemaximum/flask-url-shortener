@@ -53,7 +53,10 @@ def redirect_tiny(key):
 
 @app.route('/getmethod/<key>')
 def get_js_data(key):
-	return "hello, world!"
+	key = key[1:-1]
+	hits = models.query_hits_and_url_for_link(key)[0][3]
+	my_string = "Think short URL has been visited " + str(hits) + " times."
+	return my_string
 
 if __name__ == '__main__':
 	app.run(debug=True)
