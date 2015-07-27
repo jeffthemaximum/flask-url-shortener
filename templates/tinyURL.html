@@ -2,12 +2,7 @@
 {% block content %}
 	<h3>Long URL</h3>
 	<p>This is your long URL: {{ url }} </p>
-<<<<<<< HEAD
-	<p>This is your short URL: <a id="link" target="_blank" href={{ url_for('home') }}{{ new_url }}>{{ url_for('home', _external=True) }}{{ new_url }}</a></p>
-	<p>Think short URL has been visited {{ hits }} times</p>
-=======
 	<p>This is your short URL: <a id="link" target="_blank" href="http://localhost:5000{{ url_for('home') }}{{ new_url }}">localhost:5000{{ url_for('home') }}{{ new_url }}</a></p>
 	<p id="hit_count">Think short URL has been visited {{ hits }} times</p>
->>>>>>> implement-js
 	<a href='/'>Go back! Make another short URL!</a>
 {% endblock %}
