@@ -48,12 +48,12 @@ def redirect_tiny(key):
 	except:
 		url = ""
 	long_url = 'http://' + url
-	models.update_hits(key)
 	return redirect(long_url, code=302)
 
 @app.route('/getmethod/<key>')
 def get_js_data(key):
 	key = key[1:-1]
+	models.update_hits(key)
 	hits = models.query_hits_and_url_for_link(key)[0][3]
 	my_string = "Think short URL has been visited " + str(hits) + " times."
 	return my_string
