@@ -3,6 +3,7 @@ String.prototype.getKey = function() {
 }
 
 $(document).ready(function(){
+	debugger;
 	var base_url = window.location.origin;								//get base url of tinyurl webapp
 	var url = base_url + '/' + $('#link').attr('urlKey');				//build link using baseurl + / + key
 	$('#link').attr('href', url);										//set href of link to url
