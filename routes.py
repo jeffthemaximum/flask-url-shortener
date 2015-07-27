@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect
 import pudb, random
 from random import shuffle
 import models
+import json
 
 app = Flask(__name__)
 my_dict = {}
@@ -49,6 +50,13 @@ def redirect_tiny(key):
 	long_url = 'http://' + url
 	models.update_hits(key)
 	return redirect(long_url, code=302)
+
+@app.route('/getmethod/<key>')
+def get_js_data(key):
+	key = key[1:-1]
+	hits = models.query_hits_and_url_for_link(key)[0][3]
+	my_string = "Think short URL has been visited " + str(hits) + " times."
+	return my_string
 
 if __name__ == '__main__':
 	app.run(debug=True)
